@@ -720,7 +720,7 @@ function openModal(id) {
   document.getElementById('modal-overlay').classList.add('active');
   const modals = document.querySelectorAll('.modal-box');
   modals.forEach(m => m.style.display = 'none');
-  document.getElementById('modal-' + id).style.display = 'flex';
+  document.getElementById(id).style.display = 'flex';
 }
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('active');
