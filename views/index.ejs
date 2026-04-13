@@ -93,13 +93,13 @@ svg.icon-destructive{stroke:var(--destructive)}
 .gif-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
 .aggressive-arrow {
   position: fixed; 
-  top: 40px;      
-  right: 380px;   
+  top: 280px;   
+  right: 420px;  
   z-index: 999999;
   display: none; 
-  flex-direction: column; 
-  align-items: center;    
-  gap: 15px; 
+  flex-direction: row; /* Текст слева, стрелка справа */
+  align-items: center; 
+  gap: 25px; 
   animation: attackArrow 0.4s infinite alternate; 
   pointer-events: none;
 }
