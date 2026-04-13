@@ -91,7 +91,18 @@ svg.icon-destructive{stroke:var(--destructive)}
 .install-modal p.alert-text { color: var(--destructive); font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; animation: pulseText 1s infinite; }
 .gif-container { margin: 1.5rem auto; border: 3px dashed var(--primary); border-radius: 8px; padding: 5px; background: #000; max-width: 500px; }
 .gif-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
-.aggressive-arrow { position: fixed; top: 50%; transform: translateY(-50%); right: 60px; z-index: 999999; display: none; flex-direction: row; align-items: center; gap: 30px; animation: attackArrow 0.4s infinite alternate; pointer-events: none; }
+.aggressive-arrow {
+  position: fixed; 
+  top: 40px;      
+  right: 380px;   
+  z-index: 999999;
+  display: none; 
+  flex-direction: column; 
+  align-items: center;    
+  gap: 15px; 
+  animation: attackArrow 0.4s infinite alternate; 
+  pointer-events: none;
+}
 .aggressive-arrow p { background: #f8f9fa; color: #0c0d10; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 1.1rem; margin: 0; box-shadow: 0 0 20px rgba(255,255,255,0.3); white-space: nowrap; text-transform: uppercase; }
 .aggressive-arrow svg { width: 100px; height: 100px; fill: #f8f9fa; filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
 .fake-progress { width: 100%; height: 8px; background: var(--border); border-radius: 4px; margin: 1.5rem 0; overflow: hidden; position: relative; }
