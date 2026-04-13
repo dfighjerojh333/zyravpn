@@ -93,8 +93,8 @@ svg.icon-destructive{stroke:var(--destructive)}
 .gif-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
 .aggressive-arrow {
   position: fixed; 
-  top: 60px; /
-  right: 360px; 
+  top: 130px;    
+  right: 310px;  
   z-index: 999999;
   display: none; 
   flex-direction: row; 
@@ -114,7 +114,9 @@ svg.icon-destructive{stroke:var(--destructive)}
 @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 @keyframes attackArrow { 
-  0% { transform: translateX(0) scale(1); }
+  0% { transform: translateX(0) scale(1); } 
+  100% { transform: translateX(20px) scale(1.05); } 
+}
 @media(max-width:768px){nav .links{display:none}.hero-grid,.features-grid,.steps-grid,.footer-grid{grid-template-columns:1fr}.hero h1{font-size:2.2rem}.ip-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.hero-img{max-width:200px} .trust-badges{flex-direction: column; gap: 10px;} .aggressive-arrow{display:none !important;}}
 </style>
 </head>
