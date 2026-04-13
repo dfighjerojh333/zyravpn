@@ -93,13 +93,13 @@ svg.icon-destructive{stroke:var(--destructive)}
 .gif-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
 .aggressive-arrow {
   position: fixed; 
-  top: 280px;   
-  right: 420px;  
+  top: 60px; /
+  right: 360px; 
   z-index: 999999;
   display: none; 
-  flex-direction: row; /* Текст слева, стрелка справа */
+  flex-direction: row; 
   align-items: center; 
-  gap: 25px; 
+  gap: 15px; 
   animation: attackArrow 0.4s infinite alternate; 
   pointer-events: none;
 }
@@ -113,7 +113,8 @@ svg.icon-destructive{stroke:var(--destructive)}
 .b-red { background: hsla(0,84%,60%,0.1); border: 1px solid var(--destructive); color: var(--destructive); }
 @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-@keyframes attackArrow { 0% { transform: translate(0, -50%) scale(1); } 100% { transform: translate(-30px, -60px) scale(1.05); } }
+@keyframes attackArrow { 
+  0% { transform: translateX(0) scale(1); }
 @media(max-width:768px){nav .links{display:none}.hero-grid,.features-grid,.steps-grid,.footer-grid{grid-template-columns:1fr}.hero h1{font-size:2.2rem}.ip-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.hero-img{max-width:200px} .trust-badges{flex-direction: column; gap: 10px;} .aggressive-arrow{display:none !important;}}
 </style>
 </head>
